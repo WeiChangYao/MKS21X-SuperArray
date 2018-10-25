@@ -21,12 +21,29 @@ public class SuperArray{
     return true;
   }
   public String toString(){
+    String ans = "[";
     for (int i = 0; i < size; i++) {
       if (i > 0) {
-        return ", ";
+        ans += ", ";
         }
-      return data[i];
+      ans += data[i];
     }
+    return ans + "]";
+  }
+  public String toStringDebug(){
+    String ans = "[";
+    for (int i = 0; i < data.length; i++) {
+      if (i > 0) {
+        ans += ", ";
+        }
+      if (data[i] != null){
+        ans += data[i];
+        }
+      else{
+        ans += "null";
+        }
+    }  
+    return ans + "]";
   }
   public String get(int index){
     if (index < 0 || index > size()){ //I kinda changed that btw
@@ -36,15 +53,19 @@ public class SuperArray{
       return data[index];
     }
   }
-  public String set(int index, String thing){
-    if (index < 0 || index > size()){
+  public String set(int i, String thing){
+    String ans = "";
+    if (i < 0 || i > size()){
       return null;
     }
     else{
-      return get(index);
-      data[index] = thing;
+      ans += data[i];
+      data[i] = thing;
     }
+    return ans;
   }
 }
       
+
+
 

@@ -25,9 +25,9 @@ public class DavidDriver{
 		beef.add("cow");
 		System.out.println("\nChecking add() and toString(): should return [red, cow]");
 		System.out.println(beef);
-		for (int x = 0; x < 9; x++){
-			beef.add("filler");
-		}
+		//for (int x = 0; x < 9; x++){
+			//beef.add("filler");
+		//}
 		System.out.println("\n\nTesting add() while full: should return false");
 		System.out.println(beef.add("full"));
 		
