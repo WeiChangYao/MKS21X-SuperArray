@@ -90,6 +90,9 @@ public class SuperArray{
     }
     return -1;
   }
+  public int lastIndexOf(String target){ //set i as this other thing and return it in the end if it is a number that isnt the starting one like -2 or something.
+    for (int i = 0; i<size ; i++){
+      if
 }
       
 
