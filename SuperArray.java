@@ -64,6 +64,15 @@ public class SuperArray{
     }
     return ans;
   }
+  public void resize(){
+    String[] data2;
+    if (size == data.length){
+      data2 = new String[data.length * 2];
+      for (int i = 0; i<size; i++){
+        data2[i] = data[i];
+      }
+    }
+  }
 }
       
 
