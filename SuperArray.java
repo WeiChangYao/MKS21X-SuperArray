@@ -40,7 +40,7 @@ public class SuperArray{
         ans += data[i];
         }
       else{
-        ans += "null";
+        ans += null;
         }
     }  
     return ans + "]";
