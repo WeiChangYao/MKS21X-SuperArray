@@ -71,7 +71,9 @@ public class SuperArray{
       for (int i = 0; i<size; i++){
         data2[i] = data[i];
       }
+      data = data2;
     }
+    //data = data2;
   }
 }
       
