@@ -102,6 +102,20 @@ public class SuperArray{
     }
     return lastI;
   }
+  public void add(int index, String thing){
+    //if (index < 0 || index > size) {
+      //return null;
+    //}
+    if (size() == data.length){
+      resize();
+    }
+    int place = size();
+    for (int i = size()-1; data[index] != null; i--){
+      data[place] = data[i];
+      place--;
+    }
+    data[index] = thing;
+  }
 }
       
 
