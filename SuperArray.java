@@ -16,6 +16,9 @@ public class SuperArray{
     return (size() == 0);
   }
   public boolean add(String thing){
+    if (size == data.length){
+      resize();
+    }
     data[size()] = thing;
     size = size + 1; 
     return true;
@@ -90,9 +93,15 @@ public class SuperArray{
     }
     return -1;
   }
-  public int lastIndexOf(String target){ //set i as this other thing and return it in the end if it is a number that isnt the starting one like -2 or something.
+  public int lastIndexOf(String target){ 
+    int lastI = -1;
     for (int i = 0; i<size ; i++){
-      if
+      if (data[i].equals(target)){
+        lastI = i;
+      }
+    }
+    return lastI;
+  }
 }
       
 
