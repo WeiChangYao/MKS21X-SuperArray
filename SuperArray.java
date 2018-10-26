@@ -105,7 +105,7 @@ public class SuperArray{
   public void add(int index, String thing){
     //if (index < 0 || index > size) {
       //return null;
-    //}
+    //}  DON'T KNOW HOW TO RETURN ERROR!!!
     if (size() == data.length){
       resize();
     }
@@ -115,6 +115,32 @@ public class SuperArray{
       place--;
     }
     data[index] = thing;
+  }
+  public String remove(int index){
+    if (index < 0 || index >= size()){
+      return null;
+    }
+    String ans = data[index];
+    for (int i = index; i < size()-1; i++){
+      data[i] = data[i+1];
+    }
+    data[size()-1] = null;
+    return ans;
+  }
+  public void booRemove(int index){
+    for (int i = index; i < size()-1; i++){
+      data[i] = data[i+1];
+    }
+    data[size()-1] = null;
+  }
+  public boolean remove(String thing){
+    for (int i = 0; i < size(); i ++){
+      if (data[i] == thing) {
+        booRemove(i);
+        return true;
+      }
+    }
+    return false;
   }
 }
       
