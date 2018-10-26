@@ -124,6 +124,7 @@ public class SuperArray{
       data[i] = data[i+1];
     }
     data[size()-1] = null;
+    size -= 1;
     return ans;
   }
   public void booRemove(int index){
@@ -134,8 +135,9 @@ public class SuperArray{
   }
   public boolean remove(String thing){
     for (int i = 0; i < size(); i ++){
-      if (data[i] == thing) {
+      if (data[i].equals(thing)){
         booRemove(i);
+        size -= 1;
         return true;
       }
     }

@@ -1,97 +1,112 @@
-public class Driver{
-	public static void main(String[] args){
-    /**phase 2 testing start*/
-    System.out.println("Phase 2 testing, start!");
-    //testing resize()
-    SuperArray letters = new SuperArray();
+public class Driver {
+    public static void main(String[] args) {
 
-    for (int x = 0; x < 20; x++){
-      System.out.println();
-			letters.add("a");
-      System.out.println("Size: " + letters.size());
-      System.out.println(letters);
-		} //array should now be filled to index 19
+        //PHASE 1NE
+        //PART 1 testing #0,2,3
+        SuperArray mine = new SuperArray();
+        System.out.println("PHASE 1\n\nPart 1\n" + mine.size() + " ?= 0");
+        System.out.println(mine.isEmpty() + " ?= true");
+        String myString = "your";
+        for (int idx = 0; idx < myString.length(); idx++) {
+            mine.add(myString.substring(idx, idx + 1));
+        }
+        System.out.println(mine.add("ssss") + " ?= true");
+        System.out.println(mine.size() + " ?= 5");
+        System.out.println(mine.isEmpty() + " ?= false\n");
+        //PART 2 testing #4,5
+        System.out.println("Part 2\n" + mine + " ?= [y, o, u, r, ssss]");
+        System.out.println(mine.get(4) + mine.get(1) + mine.get(2) + mine.get(3) + " ?= ssssour");
+        System.out.println(mine.get(5) + " ?= null");
+        System.out.println(mine.get(6) + "" + mine.get(7) + " ?= nullnull");
+        System.out.println("YOU SHOULD SEE 3 ERROR MESSAGES ABOVE (error, null, error, error, nullnull)");
+        System.out.println(mine.toStringDebug() + " ?= [y, o, u, r, ssss, null, null, null, null, null]\n");
+        //PART 3 testing #1,6
+        System.out.println("Part 3\n" + mine.set(0, "ssss") + mine.set(3, "pp") + " ?= yr");
+        System.out.println(mine + " ?= [ssss, o, u, pp, ssss]");
+        mine.clear(); //byebye mine you will be gladly missed :(((
+        System.out.println(mine.size() + " ?= 0");
+        System.out.println(mine.get(0) + " ?= null (with one error beforehand)\n\nPHASE 2\n\nPart 1");
 
-    System.out.println();
-    System.out.println("Phase 2 testing, end");
-    /** phase 2 testing end*/
+        //PHASE 2WOO
+        //PART 1 testing #3,7 once
+        String KsString = "supercalifragilisticexpialidocious";
+        SuperArray ligma = new SuperArray();
+        for (int idx = 0; idx < 10; idx++) {
+            ligma.add(KsString.substring(idx, idx + 1));
+        }
+        System.out.println(ligma.toStringDebug() + " ?= [s, u, p, e, r, c, a, l, i, f]"); //NO NULLS HERE
+        ligma.add(KsString.substring(10, 11));
+        System.out.println(ligma.size() + " ?= 11");
+        System.out.println(ligma.toStringDebug() + " ?= [s, u, p, e, r, c, a, l, i, f, r, null,..., null]\nyes you have to count the nulls\nit depends on how you made your resize\nif you made it so when you resize it * 2, there should be 9 nulls\nif you made it so when you resize it * 2 + 1, there should be 10 nulls\nif you made it so when you resize it + 1, there should be 0 nulls");
+        for (int idx = 11; idx < KsString.length(); idx++) {
+            ligma.add(KsString.substring(idx, idx + 1));
+        }
+        System.out.println(ligma.size() + " ?= 34");
+        System.out.println(ligma + " ?= it should spell super...docious");
+        int count = 0;
+        for (int idx = 0; idx < ligma.toStringDebug().length() - 3; idx++) {
+            if (ligma.toStringDebug().substring(idx, idx + 4).equals("null")) {
+                count++;
+            }
+        }
+        System.out.println(count + " ?= using same rules as last time, should be 6, 9, or 0\n\nPart 2");
+        //I hate the word supercalifragilisticexpialidocious now why does this word exist?????
+        //PART 2 testing #3,7 again! i think? It's easier to pass I think
+        SuperArray omg = new SuperArray();
+        for (int idx = 0; idx < 20; idx += 2) {
+            omg.add(idx + "");
+        }
+        System.out.println(omg.size() + " ?= 10");
+        System.out.println(omg + " ?= [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]");
+        String wth = "pleasedontfailme";
+        for (int idx = 0; idx < wth.length() - 1; idx += 2) {
+            omg.add(wth.substring(idx, idx + 2));
+        }
+        System.out.println(omg.size() + " ?= 18\n\nPHASE 3\n\nPart 1");
 
-    System.out.println();
-    System.out.println();
-
-    /** phase 2 testing end*/
-    System.out.println("Phase 3 testing, start!");
-    System.out.println();
-
-    //testing contains()
-    SuperArray randomLetters = new SuperArray();
-    randomLetters.add("b");
-    randomLetters.add("f");
-    randomLetters.add("g");
-    randomLetters.add("c");
-    randomLetters.add("z");
-
-    System.out.println(randomLetters); //should print [b,f,g,c,z]
-
-    if (randomLetters.contains("a")){
-      System.out.println("a is in the array");
-    } else {
-      System.out.println("a is not in the array");
-    } //should print "a is not in the array"
-
-    if (randomLetters.contains("c")){
-      System.out.println("c is in the array");
-    } else {
-      System.out.println("c is not in the array");
-    } //should print "c is in the array"
-
-    System.out.println();
-
-    //testing indexOf() and lastIndexOf()
-    randomLetters.add("b");
-    randomLetters.add("z");
-    System.out.println(randomLetters); //should print [b,f,g,c,z,b,z]
-
-    System.out.println("The first occurance of b is at: " + randomLetters.indexOf("b")); //should print 0
-    System.out.println("The first occurance of f is at: " + randomLetters.indexOf("f")); //should print 1
-    System.out.println("The first occurance of g is at: " + randomLetters.indexOf("g")); //should print 2
-    System.out.println("The first occurance of c is at: " + randomLetters.indexOf("c")); //should print 3
-    System.out.println("The first occurance of z is at: " + randomLetters.indexOf("z")); //should print 4
-    System.out.println("The first occurance of j is at: " + randomLetters.indexOf("j")); //should print -1
-
-    System.out.println();
-
-    System.out.println("The last occurance of b is at: " + randomLetters.lastIndexOf("b")); //should print 5
-    System.out.println("The last occurance of f is at: " + randomLetters.lastIndexOf("f")); //should print 1
-    System.out.println("The last occurance of g is at: " + randomLetters.lastIndexOf("g")); //should print 2
-    System.out.println("The last occurance of c is at: " + randomLetters.lastIndexOf("c")); //should print 3
-    System.out.println("The last occurance of z is at: " + randomLetters.lastIndexOf("z")); //should print 6
-    System.out.println("The last occurance of j is at: " + randomLetters.lastIndexOf("j")); //should print -1
-
-    System.out.println();
-
-    //testing add(int,String)
-    System.out.println(randomLetters);//should print [b,f,g,c,z,b,z]
-
-    randomLetters.add(2, "a");
-    System.out.println(randomLetters);//should print [b,f,a,g,c,z,b,z]
-    randomLetters.add(10, "a");//should print error
-
-    System.out.println();
-
-    //testing remove()
-    System.out.println(randomLetters);//should print [b,f,a,g,c,z,b,z]
-
-    System.out.println(randomLetters.remove(9));//should print null
-    System.out.println(randomLetters.remove(1));//should print f;
-    System.out.println(randomLetters);//should print [b,a,g,c,z,b,z]
-
-    System.out.println();
-    System.out.println(randomLetters.remove("d"));//should print false
-    System.out.println(randomLetters.remove("z"));//should print true
-    System.out.println(randomLetters);//should print [b,a,g,c,b,z]
-
-    System.out.println();
-    System.out.println("Phase 3 testing, end");
-  }
+        //PHASE 3HREEEE
+        //PART 1 testing #8, 9
+        SuperArray almostDone = new SuperArray();
+        String alphabet = "abcdefghijklmnopqrst";
+        for (int idx = 0; idx < alphabet.length() - 1; idx += 2) {
+            almostDone.add(alphabet.substring(idx, idx + 2));
+        }
+        System.out.println(almostDone.contains("op") + " ?= true");
+        System.out.println(almostDone.contains("fg") + " ?= false");
+        System.out.println(almostDone.indexOf("op") + " ?= 7");
+        System.out.println(almostDone.indexOf("fg") + " ?= -1");
+        SuperArray herether = new SuperArray();
+        for (int idx = 0; idx < 15; idx++) {
+            herether.add(idx % 4 + "");
+        }
+        System.out.println(herether.lastIndexOf("3") + " ?= 11");
+        System.out.println(herether.lastIndexOf("4") + " ?= -1");
+        System.out.println(herether.lastIndexOf("0") + " ?= 12\n\nPart 2");
+        //PART 2 testing #8,10
+        almostDone.add(3, "happy birthday to me");
+        System.out.println(almostDone + " ?= [ab, cd, ef, happy birthday to me, gh, ij, kl, mn, op, qr, st]");
+        System.out.println(almostDone.contains("happy birthday to me") + " ?= true");
+        System.out.println(almostDone.size() + " ?= 11");
+        almostDone.add(11, "sad day to you");
+        System.out.println(almostDone.size() + " ?= 12");
+        System.out.println(almostDone + " ?= [ab, cd, ef, happy birthday to me, gh, ij, kl, mn, op, qr, st, sad day to you]");
+        //almostDone.add(21, "oh no");
+        //System.out.println("There should be error message above");
+        System.out.println(almostDone.size() + " ?= 12\n\nPart3");
+        //PART 3 testing #8,11
+        System.out.println(almostDone.remove(11) + " ?= sad day to you");
+        System.out.println(almostDone.size() + " ?= 11");
+        System.out.println(almostDone.remove(3) + " ?= happy birthday to me");
+        System.out.println(almostDone.size() + " ?= 10");
+        System.out.println(almostDone + " ?= [ab, cd, ef, gh, ij, kl, mn, op, qr, st]");
+        System.out.println(almostDone.remove(69) + " ?= null");
+        System.out.println("There should be error message 2 lines above\n" + almostDone.size() + " ?= 10");
+        //PART 4 testing #12
+        System.out.println(almostDone.remove("cd") + " ?= true");
+        System.out.println(almostDone.size() + " ?= 9");
+        System.out.println(almostDone + "[ab, ef, gh, ij, kl, mn, op, qr, st]");
+        System.out.println(almostDone.remove("fg") + " ?= false");
+        System.out.println(almostDone.size() + " ?= 9");
+        System.out.println(almostDone + "[ab, ef, gh, ij, kl, mn, op, qr, st]");
+    }
 }
