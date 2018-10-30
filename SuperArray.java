@@ -50,7 +50,7 @@ public class SuperArray{
   }
   public String get(int index){
     if (index < 0 || index > size()){ //I kinda changed that btw
-      return null;
+      throw new IndexOutOfBoundsException();
     }
     else{
       return data[index];
@@ -59,7 +59,7 @@ public class SuperArray{
   public String set(int i, String thing){
     String ans = "";
     if (i < 0 || i > size()){
-      return null;
+      throw new IndexOutOfBoundsException();
     }
     else{
       ans += data[i];
@@ -103,9 +103,9 @@ public class SuperArray{
     return lastI;
   }
   public void add(int index, String thing){
-    //if (index < 0 || index > size) {
-      //return null;
-    //}  DON'T KNOW HOW TO RETURN ERROR!!!
+    if (index < 0 || index > size) {
+      throw new IndexOutOfBoundsException();
+    }  
     if (size() == data.length){
       resize();
     }
@@ -117,7 +117,7 @@ public class SuperArray{
   }
   public String remove(int index){
     if (index < 0 || index >= size()){
-      return null;
+      throw new IndexOutOfBoundsException();
     }
     String ans = data[index];
     for (int i = index; i < size()-1; i++){
