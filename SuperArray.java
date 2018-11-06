@@ -120,14 +120,24 @@ public class SuperArray{
     if (index < 0 || index > size) {
       throw new IndexOutOfBoundsException();
     }  
+    //new stuff
+    if (index == 0) {
+      add(get(size()-1));
+      for (int i = size()-3; i>-1; i--){
+        data[i+1] = data[i];
+      }
+      data[index] = thing;
+    }
+    else{
     if (size() == data.length){
       resize();
     }
     add(get(size()-1));
-    for (int i = size()-1; i+1>index; i--){
+    for (int i = size()-3; i>index-1; i--){
       data[i+1] = data[i];
     }
     data[index] = thing;
+    }
   }
   public String remove(int index){
     if (index < 0 || index >= size()){
