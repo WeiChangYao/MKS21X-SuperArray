@@ -56,7 +56,7 @@ public class SuperArray{
     return ans + "]";
   }
   public String get(int index){
-    if (index < 0 || index > size()){ //I kinda changed that btw
+    if (index < 0 || index >= size()){ //I kinda changed that btw
       throw new IndexOutOfBoundsException();
     }
     else{
